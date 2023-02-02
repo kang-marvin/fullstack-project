@@ -6,6 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 
 import routes from "./routes";
 
+import "semantic-ui-css/semantic.min.css";
+import "./styles/index.css";
+
 ReactDOM.render(
   <HttpsRedirect>
     <Router>{routes()}</Router>
