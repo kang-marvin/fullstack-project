@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 
 import App from "./App";
 
-import NotFound from "./errors/not_found";
-import Dashboard from "./components/dashboard"
+import NotFound from "./errors/NotFound";
+import Dashboard from "./components/Dashboard"
 
 const routes = () => {
   return  (
