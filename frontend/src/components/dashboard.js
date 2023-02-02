@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Input, Button } from "semantic-ui-react";
-import { Grid, Input, Button, Card, Image } from "semantic-ui-react";
+import {
+  Grid, Input, Button, Card,
+  Image, Pagination, Segment, Message
+} from "semantic-ui-react";
 
+const TOTAL_PAGES = 5
 
 const SearchPanel = props => {
   const {
@@ -98,10 +101,14 @@ const ListImages = props => {
 }
 
 const Dashboard = () => {
-  const [state, setState] = useState({ currentPage: 0, searchString: "", favorites: [], results: [] })
+  const [state, setState] = useState({ currentPage: 1, searchString: "", favorites: [], results: [] })
 
   const handleSearch = () => {
     console.log(state.searchString)
+  }
+
+  const handlePaginationChange = (e, { activePage }) => {
+    setState({...state, currentPage: activePage})
   }
 
   const handleInputChange = (e) => {
@@ -121,15 +128,33 @@ const Dashboard = () => {
         handleSearch={handleSearch}
       />
 
-      {/*  */}
-      <ListImages
-        results={state.results}
-        favorites={state.favorites}
-        updateFavorites={handleFavoritesChange}
-      />
+      { state.results.length > 0 && (
+        <>
+          {/* List */}
+          <ListImages
+            results={state.results}
+            favorites={state.favorites}
+            updateFavorites={handleFavoritesChange}
+          />
 
-      {/* Pagination */}
+          <Segment basic>
+            {/* Pagination */}
+            <Pagination
+              pointing
+              secondary
+              firstItem={null}
+              lastItem={null}
+              activePage={state.currentPage}
+              onPageChange={handlePaginationChange}
+              totalPages={TOTAL_PAGES}
+            />
+          </Segment>
+        </>
+      )}
 
+      { state.results.length < 1 && (
+        <Message content="Empty results at the moment" />
+      )}
     </div>
   );
 };
