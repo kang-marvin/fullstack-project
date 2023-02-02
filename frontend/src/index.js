@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import HttpsRedirect from "react-https-redirect";
 import * as serviceWorker from './serviceWorker';
+
+import routes from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      {routes()}
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
