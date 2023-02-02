@@ -38,5 +38,5 @@ export const remove = async (url, body) => {
     headers,
     body: JSON.stringify(body),
   });
-  return reponseData(response);
+  return responseData(response);
 }

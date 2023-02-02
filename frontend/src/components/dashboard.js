@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid, Input, Button, Card,
   Image, Pagination, Segment, Message
 } from "semantic-ui-react";
 
+import { dashboardApi } from "../api/index"
+
 const TOTAL_PAGES = 5
+
+const FetchResults = (searchParams) => {
+  return dashboardApi.getCatImages(searchParams)
+}
 
 const SearchPanel = props => {
   const {
@@ -101,10 +107,22 @@ const ListImages = props => {
 }
 
 const Dashboard = () => {
-  const [state, setState] = useState({ currentPage: 1, searchString: "", favorites: [], results: [] })
+  const [state, setState] = useState({
+    currentPage: 1, searchString: "",
+    favorites: [], results: []
+  })
+
+  useEffect(() => {
+    setState({...state, results: FetchResults({})})
+    // eslint-disable-next-line
+  }, [])
 
   const handleSearch = () => {
-    console.log(state.searchString)
+    const results = FetchResults({
+      currentPage: state.currentPage,
+      searchString: state.searchString
+    })
+    setState({...state, results: results})
   }
 
   const handlePaginationChange = (e, { activePage }) => {

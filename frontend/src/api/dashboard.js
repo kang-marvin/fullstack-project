@@ -1,5 +1,5 @@
-import * as httpMethods from "./common/http_methods";
-import urlUtils from "./utils/url_utils";
+import * as httpMethods from "./common/httpMethods";
+import urlUtils from "../utils/urlUtils";
 
 class dashboard {
   static getCatImages(searchParams = {page: 1}) {

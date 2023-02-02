@@ -16,3 +16,5 @@ class urlUtils {
     return queryString;
   }
 }
+
+export default urlUtils;
