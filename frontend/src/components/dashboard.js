@@ -113,16 +113,19 @@ const Dashboard = () => {
   })
 
   useEffect(() => {
-    setState({...state, results: FetchResults({})})
+    FetchResults({}).then((response) => {
+      setState({...state, results: (response.data.cats || [])})
+    })
     // eslint-disable-next-line
   }, [])
 
   const handleSearch = () => {
-    const results = FetchResults({
+    FetchResults({
       currentPage: state.currentPage,
       searchString: state.searchString
+    }).then((response) => {
+      setState({...state, results: (response.data.cats || [])})
     })
-    setState({...state, results: results})
   }
 
   const handlePaginationChange = (e, { activePage }) => {

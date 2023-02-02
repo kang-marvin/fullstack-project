@@ -4,7 +4,7 @@ import urlUtils from "../utils/urlUtils";
 class dashboard {
   static getCatImages(searchParams = {page: 1}) {
     const queryString = urlUtils.toQueryString(searchParams);
-    return httpMethods.get(`images/cats?${queryString}`)
+    return httpMethods.get(`cats?${queryString}`)
   }
 }
 
