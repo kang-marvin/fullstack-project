@@ -1,0 +1,28 @@
+# VS generated files
+.vscode/*
+
+# Node Modules
+/node_modules
+
+# Local production build
+/build
+
+# Distribution
+/dist
+
+# Temp
+/tmp
+
+# Environment variables
+.env
+
+
+# Logs
+*.log
+
+# Development Files
+package-lock.json
+.unimportedrc.json
+
+# Development Backup files
+backup_files/**/*.js
