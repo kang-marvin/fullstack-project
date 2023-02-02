@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-const App = () => {
+const App = props => {
+  const { children } = props;
+
   return (
     <BrowserRouter>
-      <p>test</p>
+      {children}
     </BrowserRouter>
   )
 }
