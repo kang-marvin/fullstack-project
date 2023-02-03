@@ -26,3 +26,4 @@ package-lock.json
 
 # Development Backup files
 backup_files/**/*.js
+master.key
